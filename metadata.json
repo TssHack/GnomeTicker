@@ -1,0 +1,8 @@
+{
+  "uuid": "gnometicker@tsshack",
+  "name": "GnomeTicker",
+  "description": "A sleek GNOME Shell extension to monitor real-time Gold, Coins, Fiat Currencies, and Global Metals prices right from your topbar.",
+  "shell-version": ["45", "46", "47", "48"],
+  "version": 1,
+  "url": "https://github.com/tsshack/GnomeTicker"
+}

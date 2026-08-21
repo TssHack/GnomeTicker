@@ -1,0 +1,116 @@
+/* ====== Topbar ====== */
+.gticker-top-box {
+    spacing: 10px;
+    padding: 0 14px;
+    natural-width: 180px;
+}
+.gticker-top-icon { color: #62a0ea; }
+.gticker-top-label { font-size: 13px; font-weight: 700; color: #ffffff; }
+.gticker-separator { color: rgba(255, 255, 255, 0.3); font-weight: bold; }
+
+/* ====== Main Container ====== */
+.gticker-main-box {
+    padding: 16px;
+    width: 420px;
+    spacing: 12px;
+}
+
+/* ====== Header & Buttons ====== */
+.gticker-header { spacing: 8px; }
+.gticker-title { font-size: 18px; font-weight: 800; color: #ffffff; }
+.gticker-btn-box { spacing: 6px; }
+
+.gticker-icon-btn {
+    border-radius: 8px;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+.gticker-icon-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+.gticker-icon-btn:active { background-color: rgba(255, 255, 255, 0.25); }
+
+.gticker-back-btn {
+    border-radius: 8px;
+    padding: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.gticker-back-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+
+/* ====== Search Bar ====== */
+.gticker-search {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+.gticker-search:focus { background-color: rgba(98, 160, 234, 0.2); }
+
+/* ====== Content ====== */
+.gticker-scroll { max-height: 450px; padding-right: 4px; }
+.gticker-content { spacing: 24px; }
+
+.gticker-cat-header {
+    font-size: 12px;
+    font-weight: 800;
+    color: #8a8a8a;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gticker-list-container { spacing: 2px; }
+
+.gticker-row {
+    border-radius: 8px;
+    padding: 8px 10px;
+    transition: background-color 150ms ease;
+}
+.gticker-row:hover { background-color: rgba(255, 255, 255, 0.08); }
+.gticker-row:active { background-color: rgba(255, 255, 255, 0.16); }
+
+.gticker-trend { font-size: 10px; margin-right: 8px; width: 12px; }
+.trend-up { color: #57e389; }
+.trend-down { color: #ff6b6b; }
+.trend-neutral { color: #777777; }
+
+.gticker-item-name { font-size: 13px; font-weight: 500; color: #e0e0e0; }
+.gticker-item-price { font-size: 13px; font-weight: 700; color: #ffffff; }
+.gticker-copied { color: #62a0ea !important; }
+
+.gticker-updated-label {
+    font-size: 11px;
+    color: #777777;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ====== About Page ====== */
+.gticker-about-info {
+    margin-top: 20px;
+    spacing: 12px;
+}
+.gticker-about-header {
+    font-size: 12px;
+    font-weight: 800;
+    color: #8a8a8a;
+    text-transform: uppercase;
+}
+.gticker-about-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+.gticker-link-btn {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #62a0ea;
+    font-size: 14px;
+    font-weight: 600;
+}
+.gticker-link-btn:hover { background-color: rgba(98, 160, 234, 0.2); }
