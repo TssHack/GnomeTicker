@@ -2,9 +2,16 @@
   "uuid": "gnometicker@tsshack",
   "name": "GnomeTicker",
   "description": "Live Gold, Coin, Currency and Global Metals prices in your top bar. Pin the items you care about, search the full market, and click any price to copy it.",
-  "shell-version": ["45", "46", "47", "48", "49", "50", "51"],
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
   "settings-schema": "org.gnome.shell.extensions.gnometicker",
   "version": 2,
-  "version-name": "1.1.0",
+  "version-name": "1.1.1",
   "url": "https://github.com/tsshack/GnomeTicker"
 }

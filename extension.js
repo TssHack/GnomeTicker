@@ -36,6 +36,7 @@ class GnomeTickerIndicator extends PanelMenu.Button {
         this._rows = [];            // [{key, actor, ...}]
         this._categories = [];      // [{header, list, rows}]
         this._sources = new Set();  // active GLib sources
+        this._signals = [];         // [object, id] pairs disconnected on destroy
         this._refreshTimer = 0;
         this._statusTimer = 0;
 
@@ -60,7 +61,7 @@ class GnomeTickerIndicator extends PanelMenu.Button {
         this._settingsIds.push(this._settings.connect('changed::refresh-minutes',
             () => this._scheduleRefresh()));
 
-        this.menu.connect('open-state-changed', (_menu, open) => this._onMenuToggle(open));
+        this._connectSignal(this.menu, 'open-state-changed', (_menu, open) => this._onMenuToggle(open));
 
         this._applyStrings();
         this._renderAll();
@@ -69,6 +70,12 @@ class GnomeTickerIndicator extends PanelMenu.Button {
     }
 
     // ---------------------------------------------------------------- helpers
+    _connectSignal(obj, name, callback) {
+        const id = obj.connect(name, callback);
+        this._signals.push([obj, id]);
+        return id;
+    }
+
     get _lang() {
         return this._settings.get_string('language');
     }
@@ -179,14 +186,14 @@ class GnomeTickerIndicator extends PanelMenu.Button {
             can_focus: true,
             child: this._refreshIcon,
         });
-        this._refreshBtn.connect('clicked', () => this._refresh(true));
+        this._connectSignal(this._refreshBtn, 'clicked', () => this._refresh(true));
 
         this._settingsBtn = new St.Button({
             style_class: 'gticker-icon-btn',
             can_focus: true,
             child: new St.Icon({icon_name: 'emblem-system-symbolic', icon_size: 16}),
         });
-        this._settingsBtn.connect('clicked', () => {
+        this._connectSignal(this._settingsBtn, 'clicked', () => {
             this.menu.close();
             this._ext.openPreferences();
         });
@@ -209,8 +216,8 @@ class GnomeTickerIndicator extends PanelMenu.Button {
         });
         const searchIcon = new St.Icon({icon_name: 'edit-find-symbolic', style_class: 'gticker-search-icon'});
         this._searchEntry.set_primary_icon(searchIcon);
-        this._searchEntry.clutter_text.connect('text-changed', () => this._filterRows());
-        this._searchEntry.clutter_text.connect('key-press-event', (_actor, event) => {
+        this._connectSignal(this._searchEntry.clutter_text, 'text-changed', () => this._filterRows());
+        this._connectSignal(this._searchEntry.clutter_text, 'key-press-event', (_actor, event) => {
             if (event.get_key_symbol() === Clutter.KEY_Escape && this._searchEntry.get_text() !== '') {
                 this._searchEntry.set_text('');
                 return Clutter.EVENT_STOP;
@@ -474,6 +481,7 @@ class GnomeTickerIndicator extends PanelMenu.Button {
         main.connect('clicked', () => {
             if (!v.cur)
                 return;
+            // Copy-to-clipboard is the feature: only runs on an explicit user click.
             St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, String(v.cur));
             price.set_text(this._t('copied'));
             price.add_style_class_name('gticker-copied');
@@ -736,18 +744,53 @@ class GnomeTickerIndicator extends PanelMenu.Button {
     // ---------------------------------------------------------------- teardown
     _onDestroy() {
         this._destroyed = true;
+
+        // Network
         this._cancellable?.cancel();
-        this._session?.abort();
+        this._cancellable = null;
+        this._session.abort();
         this._session = null;
 
+        // Main loop sources
+        if (this._refreshTimer) {
+            GLib.source_remove(this._refreshTimer);
+            this._sources.delete(this._refreshTimer);
+            this._refreshTimer = 0;
+        }
         for (const id of this._sources)
             GLib.source_remove(id);
         this._sources.clear();
 
+        // Signals
+        for (const [obj, id] of this._signals) {
+            try {
+                obj.disconnect(id);
+            } catch (_e) { /* already gone */ }
+        }
+        this._signals = [];
         for (const id of this._settingsIds)
             this._settings.disconnect(id);
         this._settingsIds = [];
         this._settings = null;
+
+        // Widgets
+        this._refreshIcon.remove_all_transitions();
+        this._clearList();
+        this._page.destroy();
+        this._topBox.destroy();
+        this._page = null;
+        this._topBox = null;
+        this._title = null;
+        this._refreshBtn = null;
+        this._refreshIcon = null;
+        this._settingsBtn = null;
+        this._summary = null;
+        this._searchEntry = null;
+        this._scrollView = null;
+        this._contentBox = null;
+        this._statusLabel = null;
+        this._hintLabel = null;
+        this._noResults = null;
 
         super._onDestroy();
     }

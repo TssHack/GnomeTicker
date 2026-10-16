@@ -8,7 +8,7 @@
 قیمت لحظه‌ای طلا، سکه، ارز و فلزات جهانی، مستقیم در نوار بالای گنوم.
 
 ![GNOME](https://img.shields.io/badge/GNOME-45%20→%2051-4a86cf?style=flat-square&logo=gnome&logoColor=white)
-![Version](https://img.shields.io/badge/version-1.1.0-2ec27e?style=flat-square)
+![Version](https://img.shields.io/badge/version-1.1.1-2ec27e?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-f5c211?style=flat-square)
 ![GJS](https://img.shields.io/badge/made%20with-GJS-f7df1e?style=flat-square)
 
