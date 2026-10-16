@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.gnometicker" path="/org/gnome/shell/extensions/gnometicker/">
+    <key name="refresh-minutes" type="i">
+      <range min="1" max="60"/>
+      <default>5</default>
+      <summary>Refresh interval in minutes</summary>
+    </key>
+    <key name="language" type="s">
+      <default>'en'</default>
+      <summary>Language of item and category names ('en' or 'fa')</summary>
+    </key>
+    <key name="compact-topbar" type="b">
+      <default>true</default>
+      <summary>Use compact numbers (5.12M) in the top bar</summary>
+    </key>
+    <key name="show-trend-topbar" type="b">
+      <default>true</default>
+      <summary>Show trend arrows in the top bar</summary>
+    </key>
+    <key name="pinned" type="as">
+      <default>['ارزهای فیات|دلار آمریکا', 'طلا|طلای ۱۸ عیار']</default>
+      <summary>Items pinned to the top bar (category|item)</summary>
+    </key>
+  </schema>
+</schemalist>

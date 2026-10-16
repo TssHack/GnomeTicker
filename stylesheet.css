@@ -1,116 +1,139 @@
-/* ====== Topbar ====== */
-.gticker-top-box {
-    spacing: 10px;
-    padding: 0 14px;
-    natural-width: 180px;
-}
-.gticker-top-icon { color: #62a0ea; }
-.gticker-top-label { font-size: 13px; font-weight: 700; color: #ffffff; }
-.gticker-separator { color: rgba(255, 255, 255, 0.3); font-weight: bold; }
+/* GnomeTicker — uses only properties supported by St (no transition,
+   linear-gradient(), text-transform or !important). */
 
-/* ====== Main Container ====== */
-.gticker-main-box {
-    padding: 16px;
-    width: 420px;
-    spacing: 12px;
-}
+/* ====== Top bar ====== */
+.gticker-top-box { spacing: 6px; padding: 0 10px; }
+.gticker-top-icon { icon-size: 16px; color: #62a0ea; margin-right: 2px; }
+.gticker-top-name { font-size: 11px; font-weight: bold; color: rgba(255, 255, 255, 0.62); }
+.gticker-top-value { font-size: 13px; font-weight: bold; color: #ffffff; }
+.gticker-top-trend { font-size: 9px; }
+.gticker-separator { color: rgba(255, 255, 255, 0.28); font-weight: bold; margin: 0 2px; }
 
-/* ====== Header & Buttons ====== */
+/* ====== Popover ====== */
+.gticker-page { width: 430px; padding: 14px 16px 12px 16px; spacing: 12px; }
+
+/* ====== Header ====== */
 .gticker-header { spacing: 8px; }
-.gticker-title { font-size: 18px; font-weight: 800; color: #ffffff; }
+.gticker-title { font-size: 17px; font-weight: bold; color: #ffffff; }
 .gticker-btn-box { spacing: 6px; }
 
 .gticker-icon-btn {
-    border-radius: 8px;
-    padding: 6px;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #fff;
+    border-radius: 9px;
+    padding: 7px;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
 }
-.gticker-icon-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
-.gticker-icon-btn:active { background-color: rgba(255, 255, 255, 0.25); }
+.gticker-icon-btn:hover, .gticker-icon-btn:focus { background-color: rgba(255, 255, 255, 0.16); }
+.gticker-icon-btn:active { background-color: rgba(255, 255, 255, 0.24); }
+.gticker-icon-btn:busy { background-color: rgba(98, 160, 234, 0.28); color: #99c1f1; }
 
-.gticker-back-btn {
-    border-radius: 8px;
-    padding: 6px;
+/* ====== Summary cards ====== */
+.gticker-summary { spacing: 8px; }
+
+.gticker-summary-card {
     background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 12px;
+    padding: 9px 12px;
+    spacing: 1px;
 }
-.gticker-back-btn:hover { background-color: rgba(255, 255, 255, 0.15); }
+.gticker-summary-card--accent {
+    background-gradient-direction: horizontal;
+    background-gradient-start: rgba(98, 160, 234, 0.34);
+    background-gradient-end: rgba(48, 161, 197, 0.14);
+    border-color: rgba(98, 160, 234, 0.40);
+}
+.gticker-summary-label { font-size: 11px; font-weight: bold; letter-spacing: 1px; color: rgba(255, 255, 255, 0.70); }
+.gticker-summary-value { font-size: 18px; font-weight: bold; color: #ffffff; }
+.gticker-summary-change { font-size: 11px; font-weight: bold; }
+.gticker-summary-empty {
+    font-size: 12px;
+    color: #9aa4b2;
+    text-align: center;
+    padding: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+}
 
-/* ====== Search Bar ====== */
+/* ====== Search ====== */
 .gticker-search {
-    padding: 8px 12px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #fff;
-    font-size: 14px;
-    margin-bottom: 12px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    caret-color: #ffffff;
+    selection-background-color: rgba(98, 160, 234, 0.5);
 }
-.gticker-search:focus { background-color: rgba(98, 160, 234, 0.2); }
+.gticker-search:focus {
+    background-color: rgba(98, 160, 234, 0.16);
+    border-color: rgba(98, 160, 234, 0.55);
+}
+.gticker-search-icon { icon-size: 14px; color: rgba(255, 255, 255, 0.55); }
+.gticker-search StLabel.hint-text { color: rgba(255, 255, 255, 0.45); }
 
-/* ====== Content ====== */
-.gticker-scroll { max-height: 450px; padding-right: 4px; }
-.gticker-content { spacing: 24px; }
+/* ====== List ====== */
+.gticker-scroll { max-height: 400px; }
+.gticker-content { spacing: 14px; padding-right: 6px; }
 
 .gticker-cat-header {
-    font-size: 12px;
-    font-weight: 800;
-    color: #8a8a8a;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding-bottom: 4px;
-    margin-bottom: 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.gticker-list-container { spacing: 2px; }
-
-.gticker-row {
-    border-radius: 8px;
-    padding: 8px 10px;
-    transition: background-color 150ms ease;
-}
-.gticker-row:hover { background-color: rgba(255, 255, 255, 0.08); }
-.gticker-row:active { background-color: rgba(255, 255, 255, 0.16); }
-
-.gticker-trend { font-size: 10px; margin-right: 8px; width: 12px; }
-.trend-up { color: #57e389; }
-.trend-down { color: #ff6b6b; }
-.trend-neutral { color: #777777; }
-
-.gticker-item-name { font-size: 13px; font-weight: 500; color: #e0e0e0; }
-.gticker-item-price { font-size: 13px; font-weight: 700; color: #ffffff; }
-.gticker-copied { color: #62a0ea !important; }
-
-.gticker-updated-label {
     font-size: 11px;
-    color: #777777;
-    padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: #9aa4b2;
+    padding: 2px 4px 5px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.09);
 }
+.gticker-list-container { spacing: 2px; padding-top: 4px; }
 
-/* ====== About Page ====== */
-.gticker-about-info {
-    margin-top: 20px;
-    spacing: 12px;
+.gticker-row { spacing: 2px; border-radius: 10px; }
+
+.gticker-row-btn {
+    border-radius: 9px;
+    padding: 7px 8px;
+    background-color: rgba(255, 255, 255, 0.02);
 }
-.gticker-about-header {
-    font-size: 12px;
-    font-weight: 800;
-    color: #8a8a8a;
-    text-transform: uppercase;
+.gticker-row-btn:hover, .gticker-row-btn:focus { background-color: rgba(255, 255, 255, 0.09); }
+.gticker-row-btn:active { background-color: rgba(255, 255, 255, 0.15); }
+
+.gticker-star {
+    border-radius: 9px;
+    padding: 0 7px;
+    color: rgba(255, 255, 255, 0.28);
 }
-.gticker-about-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 12px;
+.gticker-star:hover, .gticker-star:focus { color: #f6d32d; background-color: rgba(255, 255, 255, 0.08); }
+.gticker-star--on { color: #f6d32d; }
+
+.gticker-trend { font-size: 9px; width: 14px; margin-right: 6px; }
+.trend-up { color: #57e389; }
+.trend-down { color: #ff7b72; }
+.trend-neutral { color: #77767b; }
+
+.gticker-item-name { font-size: 13px; color: #e7ebf0; }
+.gticker-item-price { font-size: 13px; font-weight: bold; color: #ffffff; margin-left: 8px; }
+.gticker-item-pct { font-size: 11px; min-width: 58px; text-align: right; }
+.gticker-copied { color: #8ff0a4; }
+
+.gticker-empty { font-size: 13px; color: #9aa4b2; text-align: center; padding: 22px 0; }
+
+/* ====== Placeholder / error ====== */
+.gticker-placeholder { spacing: 6px; padding: 34px 0; }
+.gticker-placeholder-icon { color: #9aa4b2; }
+.gticker-placeholder-title { font-size: 14px; font-weight: bold; color: #ffffff; text-align: center; }
+.gticker-placeholder-sub { font-size: 12px; color: #9aa4b2; text-align: center; }
+.gticker-retry-btn {
+    margin-top: 8px;
+    padding: 6px 18px;
+    border-radius: 9px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: rgba(98, 160, 234, 0.35);
 }
-.gticker-link-btn {
-    padding: 10px 12px;
-    border-radius: 8px;
-    background-color: rgba(255, 255, 255, 0.05);
-    color: #62a0ea;
-    font-size: 14px;
-    font-weight: 600;
-}
-.gticker-link-btn:hover { background-color: rgba(98, 160, 234, 0.2); }
+.gticker-retry-btn:hover, .gticker-retry-btn:focus { background-color: rgba(98, 160, 234, 0.55); }
+
+/* ====== Footer ====== */
+.gticker-footer { spacing: 2px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, 0.09); }
+.gticker-status-label { font-size: 11px; color: #9aa4b2; }
+.gticker-status-warn { color: #f8e45c; }
+.gticker-hint-label { font-size: 10px; color: rgba(255, 255, 255, 0.38); }
